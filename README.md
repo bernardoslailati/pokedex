@@ -1,0 +1,1 @@
+# DesafioSquadra-Android-Pokedex
