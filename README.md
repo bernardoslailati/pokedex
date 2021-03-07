@@ -29,8 +29,8 @@ Funcionalidades esperadas:
 - Lista de Pokémons por Geração e Tipo
 
 <p align="center">
-  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon.gif" />
-  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_tipo.gif" />
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon.jpeg" />
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_tipo.jpeg" />
 </p>
 
 - Mecanismo de Busca em Listas
