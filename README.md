@@ -22,14 +22,29 @@ Funcionalidades esperadas:
 
 - Tema Claro / Escuro
 
-- Lista de Pokémons por Geração
+<p align="center">
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/tema_claro_escuro.gif" />
+</p>
 
-- Lista de Pokémons por Tipo
+- Lista de Pokémons por Geração e Tipo
+
+<p align="center">
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon.gif" />
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_tipo.gif" />
+</p>
 
 - Mecanismo de Busca em Listas
 
+<p align="center">
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_pokemon.gif" />
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_tipo.gif" />
+</p>
+
 - Detalhes do Pokémon
 
+<p align="center">
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/detalhes_pokemon.gif" />
+</p>
 
 ### Ferramentas gerais de desenvolvimento
 
