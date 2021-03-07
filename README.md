@@ -28,6 +28,8 @@ Funcionalidades esperadas:
 
 - Lista de Pokémons por Geração e Tipo
 
+  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline.
+
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon_geracao1.jpg" />
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon_geracao2.jpg" />
@@ -42,7 +44,8 @@ Funcionalidades esperadas:
 </p>
 
 - Detalhes do Pokémon
-
+  - As informações de PESO e ALTURA do pokémon são SEMPRE buscados via API em tempo real de forma assíncrona (não ficam aramazenadas no banco de dados)! Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
+  
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/detalhes_pokemon.gif" />
 </p>
@@ -56,13 +59,15 @@ Funcionalidades esperadas:
   - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições à cada 12 horas
   - [PokéAPI](https://pokeapi.co/): uso ilimitado
 
-### Principas dependências utilizadas
+### Principas bibliotecas utilizadas
 
-- **Glide**: apresentar GIFs em tela e realizar lazy loading de imagens ([https://github.com/bumptech/glide](https://github.com/bumptech/glide), 30.8k stars | 5.6k forks | boa documentação)
-- **Retrofit2**: cliente HTTP de tipagem segura para Android e Java ([https://github.com/square/retrofit](https://github.com/square/retrofit), 37.7k stars | 6.8k forks | boa documentação)
-- **Room**
-- **LiveData**
-- **ViewModel**
+- **Glide**: apresentar GIFs em tela e aplicar lazy loading em imagens ([https://github.com/bumptech/glide](https://github.com/bumptech/glide), 30.8k stars | 5.6k forks | boa documentação)
+- **Retrofit2**: cliente HTTP de tipagem segura para Android e Java com métodos síncronos e assíncronos ([https://github.com/square/retrofit](https://github.com/square/retrofit), 37.7k stars | 6.8k forks | boa documentação)
+- **Room**: abstração para criar, armazenar e gerenciar banco de dados SQLite (Jetpack Components)
+- **LiveData**: fornece uma classe que armazena dados observáveis atrelado com o reconhecimento de ciclo de vida dos componentes da aplicação (Jetpack Components)
+- **ViewModel**: (Jetpack Components)
+- **Fragment**: gera várias telas independentes que se atrelam uma Activity, aplicado no padrão de tabs (Jetpack Components)
+- **RecyclerView**: recomendado para mostrar grandes conjuntos de dados por minimizar o uso de memória (Jetpack Components)
 
 ### Escolhas e Por quês
 
@@ -73,9 +78,9 @@ Funcionalidades esperadas:
   - Utilizados para gerar uma melhor interação com o usuário, minimizar o uso de memória e otimizar layout
 
 - Banco de dados local SQLite
+  - Inserção em banco de dados dos Pokémons buscados via requisição HTTP (remover necessidade de busca repetida, a cada novo acesso à aplicação, de todos os dados de Pokémons)
   - Gerenciado pela biblioteca ROOM (Database, DAO e Entity), fortemente recomendada e inserida no Jetpack Components (junto com a biblioteca SQLite)
   - Acesso via Repository + ViewModel para otimizar buscas e evitar travamento de telas
-  - Inserção em banco de dados dos Pokémons buscados via requisição HTTP (remover necessidade de busca repetida, a cada novo acesso à aplicação, de todos os dados de Pokémons)
   
 - TabLayout + PageViewer + Fragments
   - Aprimorar acesso dos usuário às listas através tabs deslizantes intuitivas (que podem ser até mesmo reaproveitadas), padrão inserido no Jetpack Components
