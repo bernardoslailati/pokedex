@@ -5,9 +5,7 @@ import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 import com.desafio.squadra.android.pokedex.databinding.ActivityDetalhesPokemonBinding;
-import com.desafio.squadra.android.pokedex.room.entity.PokemonEntity;
 import com.desafio.squadra.android.pokedex.service.web.PokeAPIService;
-import com.desafio.squadra.android.pokedex.service.web.PokedexAPIService;
 import com.desafio.squadra.android.pokedex.service.web.response.Pokemon;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +18,6 @@ import com.desafio.squadra.android.pokedex.service.web.response.PokemonPesoAltur
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DetalhesPokemonActivity extends AppCompatActivity {
     private static final String POKE_API_BASE_URL = "https://pokeapi.co/api/v2/";
     private ActivityDetalhesPokemonBinding binding;
-    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     @SuppressLint({"DefaultLocale", "SetTextI18n", "UseCompatLoadingForDrawables"})
     @Override

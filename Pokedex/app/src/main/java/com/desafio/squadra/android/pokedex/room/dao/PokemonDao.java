@@ -20,8 +20,8 @@ public interface PokemonDao {
     @Query("SELECT * FROM pokemons ORDER BY number")
     List<PokemonEntity> buscarTodosLista();
 
-    @Query("SELECT * FROM pokemons ORDER BY number")
-    LiveData<List<PokemonEntity>> buscarTodos();
+    @Query("SELECT * FROM pokemons WHERE number BETWEEN :inicio AND :fim ORDER BY number")
+    LiveData<List<PokemonEntity>> buscarTodos(int inicio, int fim);
 
     @Query("SELECT * FROM pokemons WHERE types LIKE '%' || :type || '%' ORDER BY number")
     List<PokemonEntity> buscarTodosPorTipo(String type);

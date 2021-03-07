@@ -16,11 +16,11 @@ import com.desafio.squadra.android.pokedex.R;
 
 import java.util.List;
 
-public class PokemonTipoAdapter extends ArrayAdapter<PokemonTipo> {
+public class PokemonTipoAdapter extends ArrayAdapter<PokemonTipoItem> {
     private final LayoutInflater layoutInflater;
 
-    public PokemonTipoAdapter(@NonNull Context context, int resource, @NonNull List<PokemonTipo> listaPokemonTipos) {
-        super(context, resource, listaPokemonTipos);
+    public PokemonTipoAdapter(@NonNull Context context, int resource, @NonNull List<PokemonTipoItem> listaPokemonTipoItems) {
+        super(context, resource, listaPokemonTipoItems);
         layoutInflater = LayoutInflater.from(context);
     }
 
@@ -30,13 +30,13 @@ public class PokemonTipoAdapter extends ArrayAdapter<PokemonTipo> {
         @SuppressLint({"ViewHolder", "InflateParams"})
         View optionView = layoutInflater.inflate(R.layout.item_spinner_tipo, null, true);
 
-        PokemonTipo pokemonTipo = getItem(position);
+        PokemonTipoItem pokemonTipoItem = getItem(position);
 
         ImageView ivTypeOption = optionView.findViewById(R.id.iv_type_option);
-        ivTypeOption.setImageResource(pokemonTipo.getTypeIcon());
+        ivTypeOption.setImageResource(pokemonTipoItem.getTypeIcon());
 
         TextView tvTypeOption = optionView.findViewById(R.id.tv_type_option);
-        tvTypeOption.setText(pokemonTipo.getType());
+        tvTypeOption.setText(pokemonTipoItem.getType());
 
         return optionView;
     }
@@ -46,13 +46,13 @@ public class PokemonTipoAdapter extends ArrayAdapter<PokemonTipo> {
         if (convertView == null)
             convertView = layoutInflater.inflate(R.layout.item_spinner_tipo, parent, false);
 
-        PokemonTipo pokemonTipo = getItem(position);
+        PokemonTipoItem pokemonTipoItem = getItem(position);
 
         ImageView ivTypeOption = convertView.findViewById(R.id.iv_type_option);
-        ivTypeOption.setImageResource(pokemonTipo.getTypeIcon());
+        ivTypeOption.setImageResource(pokemonTipoItem.getTypeIcon());
 
         TextView tvTypeOption = convertView.findViewById(R.id.tv_type_option);
-        tvTypeOption.setText(pokemonTipo.getType());
+        tvTypeOption.setText(pokemonTipoItem.getType());
 
         return convertView;
 

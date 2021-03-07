@@ -23,11 +23,11 @@ public class ListasActivity extends AppCompatActivity {
         binding.viewPager.setAdapter(sectionsPagerAdapter);
         binding.tabs.setupWithViewPager(binding.viewPager);
     }
-//
-//    @Override
-//    public void onBackPressed () {
-//        moveTaskToBack(true);
-//        android.os.Process.killProcess(android.os.Process.myPid());
-//        System.exit(1);
-//    }
+
+    @Override
+    public void onBackPressed () {
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
 }

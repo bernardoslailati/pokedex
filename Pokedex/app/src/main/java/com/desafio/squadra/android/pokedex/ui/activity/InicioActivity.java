@@ -30,6 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class InicioActivity extends AppCompatActivity {
     private static final String POKEDEX_API_BASE_URL = "https://pokeapi.glitch.me/v1/";
     private static final int COUNT_POKEMONS_GEN_1 = 151;
+    private static final int COUNT_POKEMONS_GEN_2 = 100;
 
     private ActivityInicioBinding binding;
     private PokemonsViewModel pokemonsViewModel;
@@ -49,18 +50,20 @@ public class InicioActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void entrar() {
         pokemonsViewModel =
-                new ViewModelProvider(getViewModelStore(), new PokemonsViewModelFactory(this.getApplication())).get(PokemonsViewModel.class);
+                new ViewModelProvider(getViewModelStore(), new PokemonsViewModelFactory(this.getApplication(), 0)).get(PokemonsViewModel.class);
         List<PokemonEntity> listaTodosPokemons = pokemonsViewModel.buscarTodosLista();
 
-        // Verifica se precisa ou não fazer as requisições HTTP para busca de pokémons
-        if (listaTodosPokemons != null && listaTodosPokemons.size() < COUNT_POKEMONS_GEN_1) {
+        // Verifica se precisa ou não (caso as inserções de pokémons já estejam no banco de dados)
+        // fazer as requisições HTTP para busca de pokémons
+        if (listaTodosPokemons != null && listaTodosPokemons.size() < COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(POKEDEX_API_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             PokedexAPIService pokedexAPIService = retrofit.create(PokedexAPIService.class);
 
-            for(int i = 0; i <= COUNT_POKEMONS_GEN_1; i ++) {
+            for(int i = 1; i <= COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2; i ++) {
+                // Caso for necessário buscar algum pokémon que não exista na base de dados ainda
                 if (pokemonsViewModel.buscar(i) == null) {
                     pokedexAPIService.buscarPokemon(i).enqueue(new Callback<List<Pokemon>>() {
                         @Override

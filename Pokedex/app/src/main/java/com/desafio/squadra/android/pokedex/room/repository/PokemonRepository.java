@@ -18,16 +18,41 @@ public class PokemonRepository implements IPokemonRepository {
     private final PokemonDao pokemonDao;
     private final LiveData<List<PokemonEntity>> listaTodosPokemons;
 
-    public PokemonRepository(Application application) {
+    private static final int COUNT_POKEMONS_GEN_1 = 151;
+    private static final int COUNT_POKEMONS_GEN_2 = 100;
+
+    public PokemonRepository(Application application, int geracao) {
         PokemonDatabase pokemonDatabase =
                 PokemonDatabase.getInstance(application);
 
         pokemonDao = pokemonDatabase.pokemonDao();
 
-        if (pokemonDao.buscarTodos() == null)
-            listaTodosPokemons = new MutableLiveData<>();
-        else
-            listaTodosPokemons = pokemonDao.buscarTodos();
+        switch (geracao) {
+            // Listar TODOS os pokémons do banco de dados via LiveData
+            case 0:
+                if (pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_2) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_2);
+                break;
+            // Listar 1A GERACAO dos pokémons do banco de dados via LiveData
+            case 1:
+                if (pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_1) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_1);
+                break;
+            // Listar 2A GERACAO dos pokémons do banco de dados via LiveData
+            case 2:
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + 1, COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + 1, COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2);
+                break;
+            default:
+                listaTodosPokemons = new MutableLiveData<>();
+                break;
+        }
     }
 
     @Override

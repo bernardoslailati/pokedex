@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.desafio.squadra.android.pokedex.room.entity.PokemonEntity;
 import com.desafio.squadra.android.pokedex.room.repository.IPokemonRepository;
@@ -15,36 +16,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PokemonsViewModel extends AndroidViewModel implements IPokemonRepository {
-    private final PokemonRepository produtoRepositorio;
+    private final PokemonRepository pokemonRepositorio;
 
-    public PokemonsViewModel(@NonNull Application application) {
+    public PokemonsViewModel(@NonNull Application application, int geracao) {
         super(application);
-        this.produtoRepositorio = new PokemonRepository(application);
+        this.pokemonRepositorio = new PokemonRepository(application, geracao);
     }
 
     @Override
     public void inserir(PokemonEntity p) {
-        produtoRepositorio.inserir(p);
+        pokemonRepositorio.inserir(p);
     }
 
     @Override
     public PokemonEntity buscar(int number) {
-        return produtoRepositorio.buscar(number);
+        return pokemonRepositorio.buscar(number);
     }
 
     @Override
     public LiveData<List<PokemonEntity>> buscarTodos() {
-        return produtoRepositorio.buscarTodos();
+        return pokemonRepositorio.buscarTodos();
     }
 
     @Override
     public List<PokemonEntity> buscarTodosLista() {
-        return produtoRepositorio.buscarTodosLista();
+        return pokemonRepositorio.buscarTodosLista();
     }
 
     @Override
     public List<PokemonEntity> buscarTodosPorTipo(String type) {
-        return produtoRepositorio.buscarTodosPorTipo(type);
+        return pokemonRepositorio.buscarTodosPorTipo(type);
     }
 
     public List<Pokemon> formatarListaPokemons(List<PokemonEntity> pokemonEntityList) {

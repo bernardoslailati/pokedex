@@ -13,14 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import com.desafio.squadra.android.pokedex.R;
 import com.desafio.squadra.android.pokedex.databinding.FragmentTiposBinding;
 import com.desafio.squadra.android.pokedex.room.entity.PokemonEntity;
 import com.desafio.squadra.android.pokedex.service.web.response.Pokemon;
-import com.desafio.squadra.android.pokedex.ui.util.PokemonTipo;
+import com.desafio.squadra.android.pokedex.ui.util.PokemonTipoItem;
 import com.desafio.squadra.android.pokedex.ui.util.PokemonTipoAdapter;
 import com.desafio.squadra.android.pokedex.ui.util.PokemonsAdapter;
 import com.desafio.squadra.android.pokedex.viewmodel.PokemonsViewModel;
@@ -30,7 +28,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class TiposFragment extends Fragment {
 
@@ -72,26 +69,8 @@ public class TiposFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-//        setupEscolherTipo();
         setupLista();
     }
-
-//    private void setupEscolherTipo() {
-//        binding.imgBtnVerTipos.setTag(Boolean.FALSE);
-//
-//        binding.imgBtnVerTipos.setOnClickListener(v -> {
-//            if (!(Boolean)binding.imgBtnVerTipos.getTag()) {
-//                binding.imgBtnVerTipos.setImageResource(R.drawable.ic_arrow_drop_up);
-////                binding.rgPokemonTipos.setVisibility(View.VISIBLE);
-//                binding.imgBtnVerTipos.setTag(Boolean.TRUE);
-//            } else {
-//                binding.imgBtnVerTipos.setImageResource(R.drawable.ic_arrow_drop_down);
-////                binding.rgPokemonTipos.setVisibility(View.GONE);
-//                binding.imgBtnVerTipos.setTag(Boolean.FALSE);
-//            }
-//        });
-//    }
 
     private void setupLista() {
         binding.rvListaPokemonsPorTipo.addItemDecoration(new DividerItemDecoration(binding.rvListaPokemonsPorTipo.getContext(), DividerItemDecoration.VERTICAL));
@@ -103,19 +82,7 @@ public class TiposFragment extends Fragment {
         binding.rvListaPokemonsPorTipo.setAdapter(pokemonsAdapter);
 
         PokemonsViewModel produtosViewModel =
-                new ViewModelProvider(this, new PokemonsViewModelFactory(requireActivity().getApplication())).get(PokemonsViewModel.class);
-
-//        binding.rgPokemonTipos.setOnCheckedChangeListener((group, checkedId) -> {
-//            RadioButton checkedRadioButton = (RadioButton) binding.rgPokemonTipos.findViewById(checkedId);
-//
-//            List<PokemonEntity> listaPokemonsBancoDeDados = produtosViewModel.buscarTodosPorTipo(checkedRadioButton.getText().toString());
-//            listaPokemons = produtosViewModel.formatarListaPokemons(listaPokemonsBancoDeDados);
-//
-//            pokemonsAdapter.submitList(listaPokemons);
-//            pokemonsAdapter.notifyDataSetChanged();
-//        });
-
-        // --------------------------
+                new ViewModelProvider(this, new PokemonsViewModelFactory(requireActivity().getApplication(), 0)).get(PokemonsViewModel.class);
 
         PokemonTipoAdapter pokemonTipoAdapter = new PokemonTipoAdapter(requireActivity(), R.layout.item_spinner_tipo, gerarListaPokemonTipos());
         binding.spnPokemonTipos.setAdapter(pokemonTipoAdapter);
@@ -123,9 +90,9 @@ public class TiposFragment extends Fragment {
         binding.spnPokemonTipos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                PokemonTipo pokemonTipoSelecionado = (PokemonTipo) parent.getItemAtPosition(position);
+                PokemonTipoItem pokemonTipoItemSelecionado = (PokemonTipoItem) parent.getItemAtPosition(position);
 
-                List<PokemonEntity> listaPokemonsBancoDeDados = produtosViewModel.buscarTodosPorTipo(pokemonTipoSelecionado.getType());
+                List<PokemonEntity> listaPokemonsBancoDeDados = produtosViewModel.buscarTodosPorTipo(pokemonTipoItemSelecionado.getType());
                 listaPokemons = produtosViewModel.formatarListaPokemons(listaPokemonsBancoDeDados);
 
                 pokemonsAdapter.submitList(listaPokemons);
@@ -133,9 +100,7 @@ public class TiposFragment extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
@@ -145,14 +110,14 @@ public class TiposFragment extends Fragment {
         binding = null;
     }
 
-    private List<PokemonTipo> gerarListaPokemonTipos() {
-        List<PokemonTipo> listaPokemonTipos = new ArrayList<>();
+    private List<PokemonTipoItem> gerarListaPokemonTipos() {
+        List<PokemonTipoItem> listaPokemonTipoItems = new ArrayList<>();
 
         int i = 0;
         for(String pokemonTipo : listaTipos) {
-            listaPokemonTipos.add(new PokemonTipo(i, pokemonTipo));
+            listaPokemonTipoItems.add(new PokemonTipoItem(i, pokemonTipo));
         }
 
-        return listaPokemonTipos;
+        return listaPokemonTipoItems;
     }
 }
