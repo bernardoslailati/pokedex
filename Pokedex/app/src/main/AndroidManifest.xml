@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.desafio.squadra.android.pokedex">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,7 +11,15 @@
         android:roundIcon="@mipmap/ic_pokedex_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokedex">
-        <activity android:name=".InicioActivity">
+        <activity
+            android:name=".ui.activity.DetalhesPokemonActivity"
+            android:label="@string/title_activity_detalhes_pokemon"
+            android:theme="@style/Theme.Pokedex.NoActionBar" />
+        <activity
+            android:name=".ui.activity.ListasActivity"
+            android:label="@string/title_activity_listas"
+            android:theme="@style/Theme.Pokedex.NoActionBar" />
+        <activity android:name=".ui.activity.InicioActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

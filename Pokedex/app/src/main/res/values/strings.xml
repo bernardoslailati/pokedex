@@ -1,6 +1,45 @@
 <resources>
-    <string name="app_name">Pokedex</string>
+    <string name="app_name">Pokedéx</string>
     <string name="pokedex">Pokedéx</string>
     <string name="entrar">Entrar</string>
     <string name="pikachu_correndo">Pikachu Correndo</string>
+    <string name="carregando">Carregando</string>
+    <string name="title_activity_listas">Listas de Pokémons</string>
+    <string name="tab_title_1">#1 Geracao</string>
+    <string name="tab_title_2">Tipo</string>
+    <string name="pokemon">Pokémon</string>
+    <string name="tipo_2">Tipo 2</string>
+    <string name="tipo_1">Tipo 1</string>
+    <string name="title_activity_detalhes_pokemon">Detalhes Pokémon</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="altura">Altura</string>
+    <string name="peso">Peso</string>
+    <string name="pokedex_logo_dourado">Pokédex Logo Dourado</string>
+    <string name="bug">Bug</string>
+    <string name="dark">Dark</string>
+    <string name="dragon">Dragon</string>
+    <string name="electric">Electric</string>
+    <string name="fairy">Fairy</string>
+    <string name="fighting">Fighting</string>
+    <string name="fire">Fire</string>
+    <string name="flying">Flying</string>
+    <string name="ghost">Ghost</string>
+    <string name="grass">Grass</string>
+    <string name="ground">Ground</string>
+    <string name="ice">Ice</string>
+    <string name="normal">Normal</string>
+    <string name="poison">Poison</string>
+    <string name="psychic">Psychic</string>
+    <string name="rock">Rock</string>
+    <string name="steel">Steel</string>
+    <string name="water">Water</string>
+    <string name="icone_ver_mais">Ícone Ver Mais</string>
 </resources>

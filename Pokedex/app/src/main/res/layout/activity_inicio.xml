@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="10"
-    android:background="@drawable/pokeball_background"
+    android:background="@drawable/pokedex_background"
     android:orientation="vertical"
-    tools:context=".InicioActivity">
+    tools:context=".ui.activity.InicioActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,16 +17,15 @@
         tools:ignore="UseCompoundDrawables">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="32sp"
             android:text="@string/pokedex" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_pikachu_running"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_marginTop="5dp"
@@ -38,10 +37,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:orientation="vertical"
         android:layout_weight="5">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_entrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

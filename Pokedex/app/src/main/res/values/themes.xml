@@ -8,10 +8,19 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#FFDE00</item>
         <item name="colorSecondaryVariant">#B3A125</item>
-        <item name="colorOnSecondary">#3B4CCA</item>
+        <item name="colorOnSecondary">#3C3C3C</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="fontFamily">@font/kongtext</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Pokedex.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Pokedex.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Pokedex.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
