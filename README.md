@@ -37,13 +37,16 @@ Funcionalidades esperadas:
 </p>
 
 - #### Mecanismo de Busca em Listas
-
+  
+  - Implementado modelo de busca em tempo real, a cada alteração de caracter.
+  
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_pokemon.gif" />
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_tipo.gif" />
 </p>
 
 - #### Detalhes do Pokémon
+
   - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam aramazenadas no banco de dados)
   - Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
   
