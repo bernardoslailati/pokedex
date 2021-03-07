@@ -79,11 +79,7 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
             holder.setLlType2Visibility(View.GONE);
         }
 
-        holder.llItemPokemon.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), DetalhesPokemonActivity.class);
-            intent.putExtra("pokemonEscolhido", getItem(position));
-            v.getContext().startActivity(intent);
-        });
+        holder.setLlItemPokemonOnClickListener(getItem(position));
     }
 
     public static class ProdutoHolder extends RecyclerView.ViewHolder {
@@ -187,6 +183,18 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
 
         public void setLlType2Visibility(int visibility) {
             llType2.setVisibility(visibility);
+        }
+
+        public void setLlItemPokemonOnClickListener(Pokemon pokemonEscolhido) {
+            llItemPokemon.setOnClickListener(v -> {
+                Intent intent = new Intent(v.getContext(), DetalhesPokemonActivity.class);
+
+                try {
+                    intent.putExtra("pokemonEscolhido", pokemonEscolhido);
+                    v.getContext().startActivity(intent);
+
+                } catch (Exception ignored) {}
+            });
         }
     }
 }
