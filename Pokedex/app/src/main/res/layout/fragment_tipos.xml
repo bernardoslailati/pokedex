@@ -6,137 +6,25 @@
     android:orientation="vertical"
     tools:context=".ui.fragment.TiposFragment">
 
-    <RadioGroup
-        android:id="@+id/rg_tipos"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="horizontal" >
 
-        <RadioButton
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/tipo" />
+
+        <Spinner
+            android:id="@+id/spn_pokemon_tipos"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_bug"
-            android:text="@string/bug" />
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_dark"
-            android:text="@string/dark" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_dragon"
-            android:text="@string/dragon" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_electric"
-            
-            android:text="@string/electric" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_fairy"
-            
-            android:text="@string/fairy" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_fighting"
-            
-            android:text="@string/fighting" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_fire"
-            android:text="@string/fire" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_flying"
-            android:text="@string/flying" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_ghost"
-            android:text="@string/ghost" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_grass"
-            android:text="@string/grass" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_ground"
-            android:text="@string/ground" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_ice"
-            android:text="@string/ice" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_normal"
-            android:text="@string/normal" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_poison"
-            android:text="@string/poison" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_psychic"
-            android:text="@string/psychic" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_rock"
-            android:text="@string/rock" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_steel"
-            android:text="@string/steel" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:drawableStart="@drawable/ic_type_water"
-            android:text="@string/water" />
-
-    </RadioGroup>
-
-    <ImageButton
-        android:id="@+id/img_btn_ver_tipos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:foregroundGravity="right"
-        android:animateLayoutChanges="true"
-        android:backgroundTint="@android:color/transparent"
-        android:src="@drawable/ic_arrow_drop_down"
-        android:contentDescription="@string/icone_ver_mais" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_lista_pokemons_por_tipo"

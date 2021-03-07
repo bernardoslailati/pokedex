@@ -42,4 +42,6 @@
     <string name="steel">Steel</string>
     <string name="water">Water</string>
     <string name="icone_ver_mais">Ícone Ver Mais</string>
+    <string name="icone_tipo">Ícone Tipo</string>
+    <string name="tipo">Tipo:</string>
 </resources>
