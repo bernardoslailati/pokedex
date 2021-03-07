@@ -47,7 +47,7 @@ Funcionalidades esperadas:
 
 - #### Detalhes do Pokémon
 
-  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam aramazenadas no banco de dados)
+  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam aramazenadas no banco de dados);
   - Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
   
 <p align="center">
