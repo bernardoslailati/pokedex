@@ -1,17 +1,11 @@
 package com.desafio.squadra.android.pokedex.ui.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -26,7 +20,6 @@ import com.desafio.squadra.android.pokedex.viewmodel.PokemonsViewModelFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,14 +48,11 @@ public class InicioActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void entrar() {
-        binding.btnEntrar.setText("Aguarde...");
-
         pokemonsViewModel =
                 new ViewModelProvider(getViewModelStore(), new PokemonsViewModelFactory(this.getApplication())).get(PokemonsViewModel.class);
         List<PokemonEntity> listaTodosPokemons = pokemonsViewModel.buscarTodosLista();
 
         // Verifica se precisa ou não fazer as requisições HTTP para busca de pokémons
-        // listaTodosPokemonsLivedata.observe(this, pokemonEntityList -> {
         if (listaTodosPokemons != null && listaTodosPokemons.size() < COUNT_POKEMONS_GEN_1) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(POKEDEX_API_BASE_URL)
@@ -96,8 +86,6 @@ public class InicioActivity extends AppCompatActivity {
                 }
             }
         }
-        // });
-
 
         Intent intent = new Intent(getApplicationContext(), ListasActivity.class);
         startActivity(intent);
