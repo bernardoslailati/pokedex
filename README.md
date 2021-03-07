@@ -20,13 +20,13 @@ Funcionalidades esperadas:
 
 ### Funcionalidades e Demonstrativos
 
-- Tema Claro / Escuro
+- #### Tema Claro / Escuro
 
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/tema_claro_escuro.gif" />
 </p>
 
-- Lista de Pokémons por Geração e Tipo
+- #### Lista de Pokémons por Geração e Tipo
 
   - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline.
 
@@ -36,15 +36,16 @@ Funcionalidades esperadas:
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_tipo.jpg" />
 </p>
 
-- Mecanismo de Busca em Listas
+- #### Mecanismo de Busca em Listas
 
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_pokemon.gif" />
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_tipo.gif" />
 </p>
 
-- Detalhes do Pokémon
-  - As informações de PESO e ALTURA do pokémon são SEMPRE buscados via API em tempo real de forma assíncrona (não ficam aramazenadas no banco de dados)! Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
+- #### Detalhes do Pokémon
+  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam aramazenadas no banco de dados)
+  - Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
   
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/detalhes_pokemon.gif" />
