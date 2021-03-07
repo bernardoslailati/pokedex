@@ -16,7 +16,7 @@ Funcionalidades esperadas:
 <div><img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white" /></div>
 
-*Aplicativo simples e intuitivo de listagem de pokémons por geração e tipos, com opção de análise detalhada de cada pokémon.*
+<p align="center">Aplicativo simples e intuitivo de listagem de pokémons por geração e tipos, com opção de análise detalhada de cada pokémon.</p>
 
 ### Funcionalidades e Demonstrativos
 
