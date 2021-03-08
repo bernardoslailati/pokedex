@@ -18,6 +18,8 @@ Funcionalidades esperadas:
 
 <p align="center">Aplicativo de listagem de pokémons por geração (implementadas gerações 1 e 2) e tipo, com opção de análise detalhada de cada pokémon.</p>
 
+Criado por: Bernardo Michel Slailati
+
 ### Funcionalidades e Demonstrativos
 
 - #### Tema Claro / Escuro
@@ -61,7 +63,7 @@ Funcionalidades esperadas:
 - Versão Android SDK Alvo/Compilada: **29**
 - Versão Android SDK Mínima: **21**
 - APIS consumidas:
-  - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições à cada 12 horas
+  - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições a cada 12 horas
   - [PokéAPI](https://pokeapi.co/): uso ilimitado
 
 ### Principas bibliotecas utilizadas
@@ -70,7 +72,7 @@ Funcionalidades esperadas:
 - **Retrofit2**: cliente HTTP de tipagem segura para Android e Java com métodos síncronos e assíncronos ([https://github.com/square/retrofit](https://github.com/square/retrofit), 37.7k stars | 6.8k forks | boa documentação)
 - **Room**: abstração para criar, armazenar e gerenciar banco de dados SQLite (Jetpack Components)
 - **LiveData**: fornece uma classe que armazena dados observáveis atrelado com o reconhecimento de ciclo de vida dos componentes da aplicação (Jetpack Components)
-- **ViewModel**: (Jetpack Components)
+- **ViewModel**: projetado para armazenar e gerenciar dados relacionados à IU de uma maneira consciente do ciclo de vida (Jetpack Components)
 - **Fragment**: gera várias telas independentes que se atrelam uma Activity, aplicado no padrão de tabs (Jetpack Components)
 - **RecyclerView**: recomendado para mostrar grandes conjuntos de dados por minimizar o uso de memória (Jetpack Components)
 
@@ -107,4 +109,4 @@ Funcionalidades esperadas:
   - Visando aprimorar a interatividade do usuário, mostrando que algo está sendo carregado
 
 
-*Observação*: 
+__*Observação*__: percebeu-se no final do desafio que a classe utilizada *AsyncTask* será depreciada a partir da API 30 ([ver mais](https://developer.android.com/reference/android/os/AsyncTask)). Com isso, para futuras correções, a mais importante, seria a alteração para classes como *Executor* ou *FutureTask* do pacote *java.util.concurrent*.
