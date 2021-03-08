@@ -14,6 +14,7 @@ public interface PokemonDao {
     @Insert
     void inserir(PokemonEntity p);
 
+
     @Query("SELECT * FROM pokemons WHERE number = :number")
     PokemonEntity buscar(int number);
 
