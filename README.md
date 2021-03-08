@@ -16,7 +16,7 @@ Funcionalidades esperadas:
 <div><img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white" /></div>
 
-<p align="center">Aplicativo simples e intuitivo de listagem de pokémons por geração (apenas as gerações 1 e 2 foram implementadas até o momento) e tipos, com opção de análise detalhada de cada pokémon.</p>
+<p align="center">Aplicativo de listagem de pokémons por geração (implementadas gerações 1 e 2) e tipo, com opção de análise detalhada de cada pokémon.</p>
 
 ### Funcionalidades e Demonstrativos
 
@@ -28,7 +28,8 @@ Funcionalidades esperadas:
 
 - #### Lista de Pokémons por Geração e Tipo
 
-  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline.
+  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline;
+  - Será mostrado ao usuário uma mensagem e um ProgressBar circular solicitando a espera no momento da busca pelos pokémons de cada geração.
 
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon_geracao1.jpg" />
@@ -101,3 +102,9 @@ Funcionalidades esperadas:
 - Lazy loading de imagens
   - Imagens utilizadas de boa qualidade e resolução, utilizada então a biblioteca Glide para carregar de forma assíncrona as figuras relacionadas aos pokémons e os tipos (grama, fogo, água, etc.)
   - Também utilizado o Glide para gerar a animação de GIF
+
+- Uso de ProgressBar em momentos oportunos
+  - Visando aprimorar a interatividade do usuário, mostrando que algo está sendo carregado
+
+
+*Observação*: 
