@@ -13,10 +13,38 @@
         android:iconifiedByDefault="false"
         android:queryHint="Buscar pokémon por Nome..." />
 
+    <LinearLayout
+        android:id="@+id/ll_aguarde"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ProgressBar
+            android:id="@+id/pg_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="center" />
+
+        <TextView
+            android:id="@+id/tv_aguarde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="20dp"
+            android:text="@string/obtendo_dados_de_pok_mons_n_naguarde_um_instante" />
+
+    </LinearLayout>
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_lista_pokemons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_pokemon" />
+        tools:listitem="@layout/item_pokemon"
+        android:visibility="gone" />
 
 </LinearLayout>

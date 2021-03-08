@@ -36,6 +36,8 @@ public class GeracaoFragment extends Fragment {
 
     private PokemonsViewModel pokemonsViewModel;
 
+    private static final int COUNT_POKEMONS_GEN_1 = 151;
+    private static final int COUNT_POKEMONS_GEN_2 = 100;
 
     private static final String GERACAO = "geracao";
 
@@ -95,10 +97,16 @@ public class GeracaoFragment extends Fragment {
             binding.rvListaPokemons.setAdapter(pokemonsAdapter);
 
             observarListaPokemonsGeracao.observe(requireActivity(), todosPokemonsGeracao -> {
-                listaPokemons = pokemonsViewModel.formatarListaPokemons(todosPokemonsGeracao);
+                if ((geracao == 1 && todosPokemonsGeracao.size() ==  COUNT_POKEMONS_GEN_1) || (geracao == 2 && todosPokemonsGeracao.size() ==  COUNT_POKEMONS_GEN_2)) {
+                    binding.llAguarde.setVisibility(View.GONE);
 
-                pokemonsAdapter.submitList(listaPokemons);
-                pokemonsAdapter.notifyDataSetChanged();
+                    listaPokemons = pokemonsViewModel.formatarListaPokemons(todosPokemonsGeracao);
+
+                    pokemonsAdapter.submitList(listaPokemons);
+                    pokemonsAdapter.notifyDataSetChanged();
+
+                    binding.rvListaPokemons.setVisibility(View.VISIBLE);
+                }
             });
         });
     }
