@@ -16,32 +16,40 @@ Funcionalidades esperadas:
 <div><img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white" /></div>
 
-<p align="center">Aplicativo simples e intuitivo de listagem de pokémons por geração e tipos, com opção de análise detalhada de cada pokémon.</p>
+<p align="center">Aplicativo simples e intuitivo de listagem de pokémons por geração (apenas as gerações 1 e 2 foram implementadas até o momento) e tipos, com opção de análise detalhada de cada pokémon.</p>
 
 ### Funcionalidades e Demonstrativos
 
-- Tema Claro / Escuro
+- #### Tema Claro / Escuro
 
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/tema_claro_escuro.gif" />
 </p>
 
-- Lista de Pokémons por Geração e Tipo
+- #### Lista de Pokémons por Geração e Tipo
+
+  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline.
 
 <p align="center">
-  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon.jpeg" />
-  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_tipo.jpeg" />
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon_geracao1.jpg" />
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon_geracao2.jpg" />
+  <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_tipo.jpg" />
 </p>
 
-- Mecanismo de Busca em Listas
-
+- #### Mecanismo de Busca em Listas
+  
+  - Implementado modelo de busca em tempo real, a cada alteração de caracter.
+  
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_pokemon.gif" />
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_tipo.gif" />
 </p>
 
-- Detalhes do Pokémon
+- #### Detalhes do Pokémon
 
+  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam aramazenadas no banco de dados);
+  - Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
+  
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/detalhes_pokemon.gif" />
 </p>
@@ -55,13 +63,15 @@ Funcionalidades esperadas:
   - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições à cada 12 horas
   - [PokéAPI](https://pokeapi.co/): uso ilimitado
 
-### Principas dependências utilizadas
+### Principas bibliotecas utilizadas
 
-- **Glide**: apresentar GIFs em tela e realizar lazy loading de imagens ([https://github.com/bumptech/glide](https://github.com/bumptech/glide), 30.8k stars | 5.6k forks | boa documentação)
-- **Retrofit2**: cliente HTTP de tipagem segura para Android e Java ([https://github.com/square/retrofit](https://github.com/square/retrofit), 37.7k stars | 6.8k forks | boa documentação)
-- **Room**
-- **LiveData**
-- **ViewModel**
+- **Glide**: apresentar GIFs em tela e aplicar lazy loading em imagens ([https://github.com/bumptech/glide](https://github.com/bumptech/glide), 30.8k stars | 5.6k forks | boa documentação)
+- **Retrofit2**: cliente HTTP de tipagem segura para Android e Java com métodos síncronos e assíncronos ([https://github.com/square/retrofit](https://github.com/square/retrofit), 37.7k stars | 6.8k forks | boa documentação)
+- **Room**: abstração para criar, armazenar e gerenciar banco de dados SQLite (Jetpack Components)
+- **LiveData**: fornece uma classe que armazena dados observáveis atrelado com o reconhecimento de ciclo de vida dos componentes da aplicação (Jetpack Components)
+- **ViewModel**: (Jetpack Components)
+- **Fragment**: gera várias telas independentes que se atrelam uma Activity, aplicado no padrão de tabs (Jetpack Components)
+- **RecyclerView**: recomendado para mostrar grandes conjuntos de dados por minimizar o uso de memória (Jetpack Components)
 
 ### Escolhas e Por quês
 
@@ -72,9 +82,9 @@ Funcionalidades esperadas:
   - Utilizados para gerar uma melhor interação com o usuário, minimizar o uso de memória e otimizar layout
 
 - Banco de dados local SQLite
+  - Inserção em banco de dados dos Pokémons buscados via requisição HTTP (remover necessidade de busca repetida, a cada novo acesso à aplicação, de todos os dados de Pokémons)
   - Gerenciado pela biblioteca ROOM (Database, DAO e Entity), fortemente recomendada e inserida no Jetpack Components (junto com a biblioteca SQLite)
   - Acesso via Repository + ViewModel para otimizar buscas e evitar travamento de telas
-  - Inserção em banco de dados dos Pokémons buscados via requisição HTTP (remover necessidade de busca repetida, a cada novo acesso à aplicação, de todos os dados de Pokémons)
   
 - TabLayout + PageViewer + Fragments
   - Aprimorar acesso dos usuário às listas através tabs deslizantes intuitivas (que podem ser até mesmo reaproveitadas), padrão inserido no Jetpack Components
