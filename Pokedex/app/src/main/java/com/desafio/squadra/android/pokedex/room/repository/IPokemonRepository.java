@@ -1,7 +1,6 @@
 package com.desafio.squadra.android.pokedex.room.repository;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Query;
 
 import com.desafio.squadra.android.pokedex.room.entity.PokemonEntity;
 

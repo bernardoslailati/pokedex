@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 public class PokemonsViewModelFactory implements ViewModelProvider.Factory {
-    private Application application;
-    private int geracao;
+    private final Application application;
+    private final int geracao;
 
     public PokemonsViewModelFactory(Application application, int geracao) {
         this.application = application;

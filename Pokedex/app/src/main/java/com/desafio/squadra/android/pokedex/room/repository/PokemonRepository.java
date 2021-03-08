@@ -3,7 +3,6 @@ package com.desafio.squadra.android.pokedex.room.repository;
 import android.app.Application;
 import android.os.AsyncTask;
 
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -15,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class PokemonRepository implements IPokemonRepository {
+    
     private final PokemonDao pokemonDao;
     private final LiveData<List<PokemonEntity>> listaTodosPokemons;
 

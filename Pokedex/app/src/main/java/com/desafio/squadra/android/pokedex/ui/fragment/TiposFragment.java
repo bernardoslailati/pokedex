@@ -34,7 +34,9 @@ public class TiposFragment extends Fragment {
     private FragmentTiposBinding binding;
     private List<Pokemon> listaPokemons = new ArrayList<>();
     private PokemonsAdapter pokemonsAdapter;
-    private String[] listaTipos = new String[]{
+    
+    private final String[] listaTipos = new String[]{
+            "Escolha...",
             "Bug",
             "Dark",
             "Dragon",
@@ -54,6 +56,7 @@ public class TiposFragment extends Fragment {
             "Steel",
             "Water"
     };
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,18 +72,20 @@ public class TiposFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupLista();
+        setupView();
     }
 
-    private void setupLista() {
-        binding.rvListaPokemonsPorTipo.addItemDecoration(new DividerItemDecoration(binding.rvListaPokemonsPorTipo.getContext(), DividerItemDecoration.VERTICAL));
-
+    private void setupView() {
+        // Configuração RecyclerView
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         binding.rvListaPokemonsPorTipo.setLayoutManager(layoutManager);
+
+        binding.rvListaPokemonsPorTipo.addItemDecoration(new DividerItemDecoration(binding.rvListaPokemonsPorTipo.getContext(), DividerItemDecoration.VERTICAL));
 
         pokemonsAdapter = new PokemonsAdapter(getContext());
         binding.rvListaPokemonsPorTipo.setAdapter(pokemonsAdapter);
 
+        // Configuração Spinner
         PokemonsViewModel produtosViewModel =
                 new ViewModelProvider(this, new PokemonsViewModelFactory(requireActivity().getApplication(), 0)).get(PokemonsViewModel.class);
 
@@ -90,12 +95,17 @@ public class TiposFragment extends Fragment {
         binding.spnPokemonTipos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                PokemonTipoItem pokemonTipoItemSelecionado = (PokemonTipoItem) parent.getItemAtPosition(position);
+                if (position > 0) {
+                    PokemonTipoItem pokemonTipoItemSelecionado = (PokemonTipoItem) parent.getItemAtPosition(position);
 
-                List<PokemonEntity> listaPokemonsBancoDeDados = produtosViewModel.buscarTodosPorTipo(pokemonTipoItemSelecionado.getType());
-                listaPokemons = produtosViewModel.formatarListaPokemons(listaPokemonsBancoDeDados);
+                    List<PokemonEntity> listaPokemonsBancoDeDados = produtosViewModel.buscarTodosPorTipo(pokemonTipoItemSelecionado.getType());
+                    listaPokemons = produtosViewModel.formatarListaPokemons(listaPokemonsBancoDeDados);
 
-                pokemonsAdapter.submitList(listaPokemons);
+                    pokemonsAdapter.submitList(listaPokemons);
+                } else {
+                    pokemonsAdapter.submitList(new ArrayList<>());
+                }
+
                 pokemonsAdapter.notifyDataSetChanged();
             }
 

@@ -36,6 +36,7 @@ public class GeracaoFragment extends Fragment {
 
     private PokemonsViewModel pokemonsViewModel;
 
+
     private static final String GERACAO = "geracao";
 
     private GeracaoViewModel geracaoViewModel;
@@ -70,23 +71,6 @@ public class GeracaoFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentGeracaoBinding.inflate(inflater, container, false);
 
-        geracaoViewModel.getGeracao().observe(getActivity(), geracao -> {
-            pokemonsViewModel = new ViewModelProvider(this,
-                    new PokemonsViewModelFactory(requireActivity().getApplication(), geracao)).get(PokemonsViewModel.class);
-
-            LiveData<List<PokemonEntity>> observarListaPokemonsBancoDeDados = pokemonsViewModel.buscarTodos();
-
-            pokemonsAdapter = new PokemonsAdapter(getContext());
-            binding.rvListaPokemons.setAdapter(pokemonsAdapter);
-
-            observarListaPokemonsBancoDeDados.observe(requireActivity(), todosPokemons -> {
-                listaPokemons = pokemonsViewModel.formatarListaPokemons(todosPokemons);
-
-                pokemonsAdapter.submitList(listaPokemons);
-                pokemonsAdapter.notifyDataSetChanged();
-            });
-        });
-
         return binding.getRoot();
     }
 
@@ -94,6 +78,32 @@ public class GeracaoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        observarListaPokemonsPorGeracao();
+        setupView();
+    }
+
+    private void observarListaPokemonsPorGeracao() {
+        LiveData<Integer> observarGeracao = geracaoViewModel.getGeracao();
+
+        observarGeracao.observe(requireActivity(), geracao -> {
+            pokemonsViewModel = new ViewModelProvider(this,
+                    new PokemonsViewModelFactory(requireActivity().getApplication(), geracao)).get(PokemonsViewModel.class);
+
+            LiveData<List<PokemonEntity>> observarListaPokemonsGeracao = pokemonsViewModel.buscarTodos();
+
+            pokemonsAdapter = new PokemonsAdapter(getContext());
+            binding.rvListaPokemons.setAdapter(pokemonsAdapter);
+
+            observarListaPokemonsGeracao.observe(requireActivity(), todosPokemonsGeracao -> {
+                listaPokemons = pokemonsViewModel.formatarListaPokemons(todosPokemonsGeracao);
+
+                pokemonsAdapter.submitList(listaPokemons);
+                pokemonsAdapter.notifyDataSetChanged();
+            });
+        });
+    }
+
+    private void setupView() {
         binding.rvListaPokemons.addItemDecoration(new DividerItemDecoration(binding.rvListaPokemons.getContext(), DividerItemDecoration.VERTICAL));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -114,12 +124,6 @@ public class GeracaoFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
     private void pesquisarPokemon(String nomePesquisado) {
         List<Pokemon> buscaPokemons = new ArrayList<>();
 
@@ -133,5 +137,11 @@ public class GeracaoFragment extends Fragment {
             pokemonsAdapter.submitList(buscaPokemons);
             pokemonsAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

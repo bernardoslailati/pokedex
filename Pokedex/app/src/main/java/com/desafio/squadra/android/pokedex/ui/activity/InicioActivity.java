@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -28,7 +29,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InicioActivity extends AppCompatActivity {
+
     private static final String POKEDEX_API_BASE_URL = "https://pokeapi.glitch.me/v1/";
+
     private static final int COUNT_POKEMONS_GEN_1 = 151;
     private static final int COUNT_POKEMONS_GEN_2 = 100;
 
@@ -42,6 +45,7 @@ public class InicioActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        // Gerar animação do Pikachu correndo de forma assíncrona (método 'into')
         Glide.with(this).asGif().load(R.drawable.pikachu_running).into(binding.ivPikachuRunning);
 
         binding.btnEntrar.setOnClickListener(v -> entrar());
@@ -77,13 +81,13 @@ public class InicioActivity extends AppCompatActivity {
                                 PokemonEntity inserirNovoPokemon = new PokemonEntity(novoPokemon);
                                 pokemonsViewModel.inserir(inserirNovoPokemon);
                             } else {
-                                System.out.println("ERRO REQUISICAO => " + response.code() + ": " + response.message());
+                                Log.d("FALHA API", "Falha na requisição " + POKEDEX_API_BASE_URL + "  => " + response.code() + ": " + response.message());
                             }
                         }
 
                         @Override
                         public void onFailure(@NotNull Call<List<Pokemon>> call, @NotNull Throwable t) {
-                            System.out.println("ERRO SERVIDOR => " + t.getMessage());
+                            Log.d("FALHA SERVIDOR", "Falha no servidor " + POKEDEX_API_BASE_URL + "  => " + t.getMessage());
                         }
                     });
                 }

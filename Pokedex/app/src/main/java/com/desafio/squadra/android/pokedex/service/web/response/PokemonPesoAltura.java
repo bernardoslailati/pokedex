@@ -8,12 +8,6 @@ public class PokemonPesoAltura implements Parcelable {
     private int weight;
     private int height;
 
-    public PokemonPesoAltura(int id, int weight, int height) {
-        this.id = id;
-        this.weight = weight;
-        this.height = height;
-    }
-
     protected PokemonPesoAltura(Parcel in) {
         id = in.readInt();
         weight = in.readInt();

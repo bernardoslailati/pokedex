@@ -10,11 +10,13 @@ import com.desafio.squadra.android.pokedex.service.web.response.Pokemon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import com.desafio.squadra.android.pokedex.R;
 import com.desafio.squadra.android.pokedex.service.web.response.PokemonPesoAltura;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
@@ -26,10 +28,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetalhesPokemonActivity extends AppCompatActivity {
+
     private static final String POKE_API_BASE_URL = "https://pokeapi.co/api/v2/";
     private ActivityDetalhesPokemonBinding binding;
 
-    @SuppressLint({"DefaultLocale", "SetTextI18n", "UseCompatLoadingForDrawables"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,30 +42,35 @@ public class DetalhesPokemonActivity extends AppCompatActivity {
         Pokemon pokemonEscolhido = getIntent().getParcelableExtra("pokemonEscolhido");
 
         if (pokemonEscolhido != null) {
-            binding.llBackground.setBackground(getResources().getDrawable(getPokemonTypeBackgroundImageResource(pokemonEscolhido.getTypes().get(0))));
-
-            Glide.with(this)
-                    .load(pokemonEscolhido.getSprite())
-                    .placeholder(R.drawable.pokeball_loading)
-                    .error(R.drawable.ic_error_pokemon)
-                    .into(binding.ivPokemon);
-
-            binding.tvPokemonDescription.setText(String.format("#%03d", pokemonEscolhido.getNumber()) + " " + pokemonEscolhido.getName());
-
-            binding.ivType1.setImageResource(getPokemonTypeImageResource(pokemonEscolhido.getTypes().get(0)));
-            binding.tvType1.setText(pokemonEscolhido.getTypes().get(0));
-
-            if (pokemonEscolhido.getTypes().size() > 1) {
-                binding.llType2.setVisibility(View.VISIBLE);
-                binding.ivType2.setImageResource(getPokemonTypeImageResource(pokemonEscolhido.getTypes().get(1)));
-                binding.tvType2.setText(pokemonEscolhido.getTypes().get(1));
-            }
-
-            obterPesoAlturaWebService(pokemonEscolhido.getNumber());
+            preencherDadosPokemon(pokemonEscolhido);
         }
     }
 
-    private void obterPesoAlturaWebService(int number) {
+    @SuppressLint({"UseCompatLoadingForDrawables", "DefaultLocale", "SetTextI18n"})
+    private void preencherDadosPokemon(@NotNull Pokemon pokemonEscolhido) {
+        binding.llBackground.setBackground(getResources().getDrawable(getPokemonTypeBackgroundImageResource(pokemonEscolhido.getTypes().get(0))));
+
+        Glide.with(this)
+                .load(pokemonEscolhido.getSprite())
+                .placeholder(R.drawable.pokeball_loading)
+                .error(R.drawable.ic_error_pokemon)
+                .into(binding.ivPokemon);
+
+        binding.tvPokemonDescription.setText(String.format("#%03d", pokemonEscolhido.getNumber()) + " " + pokemonEscolhido.getName());
+
+        binding.ivType1.setImageResource(getPokemonTypeImageResource(pokemonEscolhido.getTypes().get(0)));
+        binding.tvType1.setText(pokemonEscolhido.getTypes().get(0));
+
+        if (pokemonEscolhido.getTypes().size() > 1) {
+            binding.llType2.setVisibility(View.VISIBLE);
+            binding.ivType2.setImageResource(getPokemonTypeImageResource(pokemonEscolhido.getTypes().get(1)));
+            binding.tvType2.setText(pokemonEscolhido.getTypes().get(1));
+        }
+
+        obterPesoAltura(pokemonEscolhido.getNumber());
+    }
+
+    private void obterPesoAltura(int number) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(POKE_API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -78,10 +85,12 @@ public class DetalhesPokemonActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     PokemonPesoAltura pokemonPesoAltura = response.body();
 
-                    binding.tvHeight.setText(String.format("%.1f", (float) pokemonPesoAltura.getHeight() / 10) + " m");
-                    binding.tvWeight.setText(String.format("%.1f", (float) pokemonPesoAltura.getWeight() / 10) + " kg");
+                    if (pokemonPesoAltura != null) {
+                        binding.tvHeight.setText(String.format("%.1f", (float) pokemonPesoAltura.getHeight() / 10) + " m");
+                        binding.tvWeight.setText(String.format("%.1f", (float) pokemonPesoAltura.getWeight() / 10) + " kg");
+                    }
                 } else {
-                    System.out.println("ERRO REQUISICAO => " + response.code() + ": " + response.message());
+                    Log.d("FALHA API", "Falha na requisição " + POKE_API_BASE_URL + "  => " + response.code() + ": " + response.message());
 
                     binding.tvHeight.setText("X");
                     binding.tvWeight.setText("X");
@@ -95,7 +104,8 @@ public class DetalhesPokemonActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NotNull Call<PokemonPesoAltura> call, @NotNull Throwable t) {
-                System.out.println("ERRO SERVIDOR => " + t.getMessage());
+                Log.d("FALHA SERVIDOR", "Falha no servidor " + POKE_API_BASE_URL + "  => " + t.getMessage());
+
 
                 binding.tvHeight.setText("X");
                 binding.tvWeight.setText("X");
@@ -109,7 +119,8 @@ public class DetalhesPokemonActivity extends AppCompatActivity {
         });
     }
 
-    private int getPokemonTypeImageResource(String type) {
+    @Contract(pure = true)
+    private int getPokemonTypeImageResource(@NotNull String type) {
         switch (type) {
             case "Bug":
                 return R.drawable.ic_type_bug;
@@ -152,7 +163,8 @@ public class DetalhesPokemonActivity extends AppCompatActivity {
         }
     }
 
-    private int getPokemonTypeBackgroundImageResource(String type1) {
+    @Contract(pure = true)
+    private int getPokemonTypeBackgroundImageResource(@NotNull String type1) {
         switch (type1) {
             case "Bug":
                 return R.drawable.background_bug;

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.desafio.squadra.android.pokedex.ui.util.SectionsPagerAdapter;
 
 public class ListasActivity extends AppCompatActivity {
+
     private ActivityListasBinding binding;
 
     @Override
@@ -19,6 +20,10 @@ public class ListasActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        setupView();
+    }
+
+    private void setupView() {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         binding.viewPager.setAdapter(sectionsPagerAdapter);
         binding.tabs.setupWithViewPager(binding.viewPager);
