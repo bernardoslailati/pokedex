@@ -109,7 +109,7 @@ Funcionalidades esperadas:
 
 __*Observação*__: percebeu-se no final do desafio que a classe utilizada *AsyncTask* será depreciada a partir da API 30 ([ver mais](https://developer.android.com/reference/android/os/AsyncTask)). Com isso, para futuras correções, a mais importante, seria a alteração para classes como *Executor* ou *FutureTask* do pacote *java.util.concurrent*.
 
-### Outras funcionalidades possíveis
+### Outras funcionalidades que ainda podem ser adicionadas
 
 - Opção de favoritar pokémons (adicionar ícone de estrela a ser preenchida em cada pokémon), sendo estes os primeiros a serem listados (necessário adicionar um campo booleano "favorito" na tabela "pokemons" SQLite)
 - Adicionar outro spinner de escolha para incrementar a busca por tipo de pokémons (cada pokémon podem ter no máximo duas tipagens)
