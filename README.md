@@ -18,8 +18,6 @@ Funcionalidades esperadas:
 
 <p align="center">Aplicativo de listagem de pokémons por geração (implementadas gerações 1 e 2) e tipo, com opção de análise detalhada de cada pokémon.</p>
 
-Criado por: Bernardo Michel Slailati
-
 ### Funcionalidades e Demonstrativos
 
 - #### Tema Claro / Escuro
