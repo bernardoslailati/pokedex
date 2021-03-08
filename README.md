@@ -114,4 +114,5 @@ __*Observação*__: percebeu-se no final do desafio que a classe utilizada *Asyn
 - Opção de favoritar pokémons (adicionar ícone de estrela a ser preenchida em cada pokémon), sendo estes os primeiros a serem listados (necessário adicionar um campo booleano "favorito" na tabela "pokemons" SQLite);
 - Adicionar outro Spinner de escolha para incrementar a busca por tipo de pokémons (cada pokémon pode ter no máximo duas tipagens);
 - Adicionar tela de "lista vazia" para ser mostrada na aba de busca por tipos;
-- Obter mais informações de cada pokémon para serem mostradas (evoluções, golpes, fraquezas, etc.).
+- Obter mais informações de cada pokémon para serem mostradas (evoluções, golpes, fraquezas, etc.);
+- Relacionar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em items de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera. 
