@@ -88,7 +88,7 @@ Funcionalidades esperadas:
   - Acesso via Repository + ViewModel para otimizar buscas e evitar travamento de telas
   
 - TabLayout + PageViewer + Fragments
-  - Aprimorar acesso dos usuário às listas através tabs deslizantes intuitivas (que podem ser até mesmo reaproveitadas), padrão inserido no Jetpack Components
+  - Aprimorar acesso dos usuário às listas através tabs deslizantes intuitivas e reaproveitáveis (aplicado na listagem de pokémons por geração, juntamente com um ViewModel relacionado, que informa a View qual a geração de pokémons de cada tela)
 
 - Requisições HTTP Assíncronas
   - A fim de não travar a interação do usuário na aplicação, foram utilizadas requisições assíncronas via método "enqueue" abstraído pela biblioteca Retrofit2
