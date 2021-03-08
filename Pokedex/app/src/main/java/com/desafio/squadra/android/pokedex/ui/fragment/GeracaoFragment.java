@@ -97,7 +97,7 @@ public class GeracaoFragment extends Fragment {
             binding.rvListaPokemons.setAdapter(pokemonsAdapter);
 
             observarListaPokemonsGeracao.observe(requireActivity(), todosPokemonsGeracao -> {
-                if (todosPokemonsGeracao.size() == 0) {
+                if (todosPokemonsGeracao.size() > 0) {
                     binding.llAguarde.setVisibility(View.GONE);
 
                     listaPokemons = pokemonsViewModel.formatarListaPokemons(todosPokemonsGeracao);
