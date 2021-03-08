@@ -16,7 +16,7 @@ Funcionalidades esperadas:
 <div><img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white" /></div>
 
-<p align="center">Aplicativo simples e intuitivo de listagem de pokémons por geração (apenas as gerações 1 e 2 foram implementadas até o momento) e tipos, com opção de análise detalhada de cada pokémon.</p>
+<p align="center">Aplicativo de listagem de pokémons por geração (implementadas gerações 1 e 2) e tipo, com opção de análise detalhada de cada pokémon.</p>
 
 ### Funcionalidades e Demonstrativos
 
@@ -28,7 +28,8 @@ Funcionalidades esperadas:
 
 - #### Lista de Pokémons por Geração e Tipo
 
-  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline.
+  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline;
+  - Será mostrado ao usuário uma mensagem e um ProgressBar circular solicitando a espera no momento da busca pelos pokémons de cada geração.
 
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/lista_pokemon_geracao1.jpg" />
@@ -60,7 +61,7 @@ Funcionalidades esperadas:
 - Versão Android SDK Alvo/Compilada: **29**
 - Versão Android SDK Mínima: **21**
 - APIS consumidas:
-  - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições à cada 12 horas
+  - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições a cada 12 horas
   - [PokéAPI](https://pokeapi.co/): uso ilimitado
 
 ### Principas bibliotecas utilizadas
@@ -69,7 +70,7 @@ Funcionalidades esperadas:
 - **Retrofit2**: cliente HTTP de tipagem segura para Android e Java com métodos síncronos e assíncronos ([https://github.com/square/retrofit](https://github.com/square/retrofit), 37.7k stars | 6.8k forks | boa documentação)
 - **Room**: abstração para criar, armazenar e gerenciar banco de dados SQLite (Jetpack Components)
 - **LiveData**: fornece uma classe que armazena dados observáveis atrelado com o reconhecimento de ciclo de vida dos componentes da aplicação (Jetpack Components)
-- **ViewModel**: (Jetpack Components)
+- **ViewModel**: projetado para armazenar e gerenciar dados relacionados à IU de uma maneira consciente do ciclo de vida (Jetpack Components)
 - **Fragment**: gera várias telas independentes que se atrelam uma Activity, aplicado no padrão de tabs (Jetpack Components)
 - **RecyclerView**: recomendado para mostrar grandes conjuntos de dados por minimizar o uso de memória (Jetpack Components)
 
@@ -101,3 +102,9 @@ Funcionalidades esperadas:
 - Lazy loading de imagens
   - Imagens utilizadas de boa qualidade e resolução, utilizada então a biblioteca Glide para carregar de forma assíncrona as figuras relacionadas aos pokémons e os tipos (grama, fogo, água, etc.)
   - Também utilizado o Glide para gerar a animação de GIF
+
+- Uso de ProgressBar em momentos oportunos
+  - Visando aprimorar a interatividade do usuário, mostrando que algo está sendo carregado
+
+
+__*Observação*__: percebeu-se no final do desafio que a classe utilizada *AsyncTask* será depreciada a partir da API 30 ([ver mais](https://developer.android.com/reference/android/os/AsyncTask)). Com isso, para futuras correções, a mais importante, seria a alteração para classes como *Executor* ou *FutureTask* do pacote *java.util.concurrent*.
