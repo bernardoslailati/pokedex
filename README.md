@@ -115,6 +115,6 @@ __*Observação*__: percebeu-se no final do desafio que a classe utilizada *Asyn
 - Adicionar outro Spinner de escolha para incrementar a busca por tipo de pokémons (cada pokémon pode ter no máximo duas tipagens);
 - Adicionar tela de "lista vazia" para ser mostrada na aba de busca por tipos;
 - Obter mais informações de cada pokémon para serem mostradas (evoluções, golpes, fraquezas, etc.);
-- Relacionar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em items de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera. 
-- Alterar elemento SearchView para conjunto ImageView + EditText para otimizar experiência e layout de busca
-- Modificar busca para nome ou número
+- Implementar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em items de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera;
+- Alterar elemento SearchView para conjunto ImageView + EditText para otimizar experiência e layout de busca;
+- Modificar busca para nome OU também número.
