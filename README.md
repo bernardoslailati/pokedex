@@ -28,7 +28,7 @@ Funcionalidades esperadas:
 
 - #### Lista de Pokémons por Geração e Tipo
 
-  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline;
+  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline, no padrão cache;
   - Será mostrado ao usuário uma mensagem e um ProgressBar circular solicitando a espera no momento da busca pelos pokémons de cada geração.
 
 <p align="center">
@@ -39,7 +39,7 @@ Funcionalidades esperadas:
 
 - #### Mecanismo de Busca em Listas
   
-  - Implementado modelo de busca em tempo real, a cada alteração de caracter.
+  - Implementado modelo de busca por nome de pokémons em tempo real, a cada alteração de caractere.
   
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_pokemon.gif" />
@@ -48,7 +48,7 @@ Funcionalidades esperadas:
 
 - #### Detalhes do Pokémon
 
-  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam aramazenadas no banco de dados);
+  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam armazenadas no banco de dados);
   - Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
   
 <p align="center">
