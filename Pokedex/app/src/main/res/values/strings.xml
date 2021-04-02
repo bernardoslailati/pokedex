@@ -7,7 +7,13 @@
     <string name="title_activity_listas">Listas de Pokémons</string>
     <string name="tab_title_1">1a Geracao</string>
     <string name="tab_title_2">2a Geracao</string>
-    <string name="tab_title_3">Tipos</string>
+    <string name="tab_title_3">3a Geracao</string>
+    <string name="tab_title_4">4a Geracao</string>
+    <string name="tab_title_5">5a Geracao</string>
+    <string name="tab_title_6">6a Geracao</string>
+    <string name="tab_title_7">7a Geracao</string>
+    <string name="tab_title_8">8a Geracao</string>
+    <string name="tab_title_9">Tipos</string>
     <string name="pokemon">Pokémon</string>
     <string name="tipo_2">Tipo 2</string>
     <string name="tipo_1">Tipo 1</string>

@@ -17,7 +17,9 @@ import org.jetbrains.annotations.NotNull;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_title_1, R.string.tab_title_2, R.string.tab_title_3};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_title_1, R.string.tab_title_2,
+            R.string.tab_title_3, R.string.tab_title_4, R.string.tab_title_5, R.string.tab_title_6,
+            R.string.tab_title_7, R.string.tab_title_8, R.string.tab_title_9};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -31,8 +33,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position){
             case 0:
             case 1:
-                return GeracaoFragment.newInstance(position + 1);
             case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+                return GeracaoFragment.newInstance(position + 1);
+            case 8:
                 return new TiposFragment();
             default:
                 return new Fragment();
@@ -47,6 +55,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 9;
     }
 }

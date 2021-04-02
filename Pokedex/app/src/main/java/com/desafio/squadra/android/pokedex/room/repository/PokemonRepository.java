@@ -20,6 +20,12 @@ public class PokemonRepository implements IPokemonRepository {
 
     private static final int COUNT_POKEMONS_GEN_1 = 151;
     private static final int COUNT_POKEMONS_GEN_2 = 100;
+    private static final int COUNT_POKEMONS_GEN_3 = 135;
+    private static final int COUNT_POKEMONS_GEN_4 = 107;
+    private static final int COUNT_POKEMONS_GEN_5 = 156;
+    private static final int COUNT_POKEMONS_GEN_6 = 72;
+    private static final int COUNT_POKEMONS_GEN_7 = 88;
+    private static final int COUNT_POKEMONS_GEN_8 = 89;
 
     public PokemonRepository(Application application, int geracao) {
         PokemonDatabase pokemonDatabase =
@@ -28,27 +34,116 @@ public class PokemonRepository implements IPokemonRepository {
         pokemonDao = pokemonDatabase.pokemonDao();
 
         switch (geracao) {
-            // Listar TODOS os pokémons do banco de dados via LiveData
             case 0:
                 if (pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_2) == null)
                     listaTodosPokemons = new MutableLiveData<>();
                 else
                     listaTodosPokemons = pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_2);
                 break;
-            // Listar 1A GERACAO dos pokémons do banco de dados via LiveData
+
             case 1:
                 if (pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_1) == null)
                     listaTodosPokemons = new MutableLiveData<>();
                 else
                     listaTodosPokemons = pokemonDao.buscarTodos(1, COUNT_POKEMONS_GEN_1);
                 break;
-            // Listar 2A GERACAO dos pokémons do banco de dados via LiveData
+
             case 2:
-                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + 1, COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2) == null)
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + 1,
+                        COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2) == null)
                     listaTodosPokemons = new MutableLiveData<>();
                 else
-                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + 1, COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2);
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + 1,
+                            COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2);
                 break;
+
+            case 3:
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + 1,
+                        COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 +
+                            COUNT_POKEMONS_GEN_2 + 1, COUNT_POKEMONS_GEN_1 +
+                            COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3);
+                break;
+
+            case 4:
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 +
+                                COUNT_POKEMONS_GEN_3 + 1,
+                        COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                COUNT_POKEMONS_GEN_4) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 +
+                            COUNT_POKEMONS_GEN_2 + + COUNT_POKEMONS_GEN_3 + 1, COUNT_POKEMONS_GEN_1 +
+                            COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 + COUNT_POKEMONS_GEN_4);
+                break;
+
+            case 5:
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 +
+                                COUNT_POKEMONS_GEN_3 + COUNT_POKEMONS_GEN_4 + 1,
+                        COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 +
+                            COUNT_POKEMONS_GEN_2 + + COUNT_POKEMONS_GEN_3 + COUNT_POKEMONS_GEN_4 + 1,
+                            COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                    COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5);
+                break;
+
+            case 6:
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 +
+                                COUNT_POKEMONS_GEN_3 + COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5
+                                + 1,
+                        COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 + COUNT_POKEMONS_GEN_6) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 +
+                                    COUNT_POKEMONS_GEN_2 + + COUNT_POKEMONS_GEN_3 +
+                                    COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 + 1,
+                            COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                    COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 + COUNT_POKEMONS_GEN_6);
+                break;
+
+            case 7:
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 +
+                                COUNT_POKEMONS_GEN_3 + COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 +
+                                COUNT_POKEMONS_GEN_6 + 1,
+                        COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 + COUNT_POKEMONS_GEN_6 +
+                                COUNT_POKEMONS_GEN_7) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 +
+                                    COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                    COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 +
+                                    COUNT_POKEMONS_GEN_6 + 1,
+                            COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                    COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 +
+                                    COUNT_POKEMONS_GEN_6 + COUNT_POKEMONS_GEN_7);
+                break;
+
+            case 8:
+                if (pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 +
+                                COUNT_POKEMONS_GEN_3 + COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 +
+                                COUNT_POKEMONS_GEN_6 + COUNT_POKEMONS_GEN_7 + 1,
+                        COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 + COUNT_POKEMONS_GEN_6 +
+                                COUNT_POKEMONS_GEN_7 + COUNT_POKEMONS_GEN_8) == null)
+                    listaTodosPokemons = new MutableLiveData<>();
+                else
+                    listaTodosPokemons = pokemonDao.buscarTodos(COUNT_POKEMONS_GEN_1 +
+                                    COUNT_POKEMONS_GEN_2 + COUNT_POKEMONS_GEN_3 +
+                                    COUNT_POKEMONS_GEN_4 + COUNT_POKEMONS_GEN_5 +
+                                    COUNT_POKEMONS_GEN_6 + COUNT_POKEMONS_GEN_7 + 1,
+                            COUNT_POKEMONS_GEN_1 + COUNT_POKEMONS_GEN_2 +
+                                    COUNT_POKEMONS_GEN_3 + COUNT_POKEMONS_GEN_4 +
+                                    COUNT_POKEMONS_GEN_5 + COUNT_POKEMONS_GEN_6 +
+                                    COUNT_POKEMONS_GEN_7 + COUNT_POKEMONS_GEN_8);
+                break;
+
             default:
                 listaTodosPokemons = new MutableLiveData<>();
                 break;

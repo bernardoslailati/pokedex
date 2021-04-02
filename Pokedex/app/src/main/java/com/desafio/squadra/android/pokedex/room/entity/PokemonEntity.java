@@ -9,6 +9,11 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.desafio.squadra.android.pokedex.service.web.response.Pokemon;
+import com.desafio.squadra.android.pokedex.service.web.response.Pokemon2;
+import com.desafio.squadra.android.pokedex.service.web.response.PokemonType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(tableName = "pokemons")
 public class PokemonEntity implements Parcelable {
@@ -19,7 +24,26 @@ public class PokemonEntity implements Parcelable {
     private String types;
     private String sprite;
 
-    public PokemonEntity() {}
+    public PokemonEntity() {
+    }
+
+    @Ignore
+    public PokemonEntity(Pokemon2 pokemon2) {
+        this.number = pokemon2.getId();
+        this.name =
+                (pokemon2.getName().substring(0, 1).toUpperCase() + pokemon2.getName().substring(1)).replace("-", " ");
+
+        List<String> pokemonTypes = new ArrayList<>();
+
+        for (PokemonType type : pokemon2.getTypes())
+            pokemonTypes.add(
+                    type.getType().getName().substring(0, 1).toUpperCase() +
+                            type.getType().getName().substring(1)
+            );
+
+        this.types = TextUtils.join(";", pokemonTypes);
+        this.sprite = pokemon2.getSprites().getOther().getOfficialArtwork().getFrontDefault();
+    }
 
     @Ignore
     public PokemonEntity(Pokemon pokemon) {

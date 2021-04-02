@@ -36,9 +36,6 @@ public class GeracaoFragment extends Fragment {
 
     private PokemonsViewModel pokemonsViewModel;
 
-    private static final int COUNT_POKEMONS_GEN_1 = 151;
-    private static final int COUNT_POKEMONS_GEN_2 = 100;
-
     private static final String GERACAO = "geracao";
 
     private GeracaoViewModel geracaoViewModel;
