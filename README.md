@@ -28,7 +28,7 @@ Funcionalidades esperadas:
 
 - #### Lista de Pokémons por Geração e Tipo
 
-  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline;
+  - TODOS os pokémons são requeridos inicialmente via API no momento de clique do botão "Entrar" e, ao serem retornados corretamente, são armazenados em um banco de dados SQLite local para futuros acessos offline, no padrão cache;
   - Será mostrado ao usuário uma mensagem e um ProgressBar circular solicitando a espera no momento da busca pelos pokémons de cada geração.
 
 <p align="center">
@@ -39,7 +39,7 @@ Funcionalidades esperadas:
 
 - #### Mecanismo de Busca em Listas
   
-  - Implementado modelo de busca em tempo real, a cada alteração de caracter.
+  - Implementado modelo de busca por nome de pokémons em tempo real, a cada alteração de caractere.
   
 <p align="center">
   <img height="600px" src="https://github.com/BernardoSlailati/DesafioSquadra-Android-Pokedex/blob/main/readme-media/pesquisar_pokemon.gif" />
@@ -48,7 +48,7 @@ Funcionalidades esperadas:
 
 - #### Detalhes do Pokémon
 
-  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam aramazenadas no banco de dados);
+  - As informações de PESO e ALTURA do pokémon são SEMPRE buscadas de forma assíncrona, via API em tempo real! (não ficam armazenadas no banco de dados);
   - Enquanto é solicitada a busca, é mostrado um ProgressBar para informar ao usuário que essa informação está sendo processada.
   
 <p align="center">
@@ -59,7 +59,7 @@ Funcionalidades esperadas:
 
 - IDE: **Android Studio 4.1.1**
 - Versão Android SDK Alvo/Compilada: **29**
-- Versão Android SDK Mínima: **21**
+- Versão Android SDK Mínima: **21 -> Android 5.0 (LOLLIPOP)**
 - APIS consumidas:
   - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições a cada 12 horas
   - [PokéAPI](https://pokeapi.co/): uso ilimitado
@@ -88,7 +88,7 @@ Funcionalidades esperadas:
   - Acesso via Repository + ViewModel para otimizar buscas e evitar travamento de telas
   
 - TabLayout + PageViewer + Fragments
-  - Aprimorar acesso dos usuário às listas através tabs deslizantes intuitivas (que podem ser até mesmo reaproveitadas), padrão inserido no Jetpack Components
+  - Aprimorar acesso dos usuário às listas através tabs deslizantes intuitivas e reaproveitáveis (aplicado na listagem de pokémons por geração, juntamente com um ViewModel relacionado, que informa a View qual a geração de pokémons de cada tela)
 
 - Requisições HTTP Assíncronas
   - A fim de não travar a interação do usuário na aplicação, foram utilizadas requisições assíncronas via método "enqueue" abstraído pela biblioteca Retrofit2
@@ -107,4 +107,14 @@ Funcionalidades esperadas:
   - Visando aprimorar a interatividade do usuário, mostrando que algo está sendo carregado
 
 
-__*Observação*__: percebeu-se no final do desafio que a classe utilizada *AsyncTask* será depreciada a partir da API 30 ([ver mais](https://developer.android.com/reference/android/os/AsyncTask)). Com isso, para futuras correções, a mais importante, seria a alteração para classes como *Executor* ou *FutureTask* do pacote *java.util.concurrent*.
+__*Observação*__: percebeu-se no final do desafio que a classe utilizada *AsyncTask* será depreciada a partir da API 30 ([ver mais](https://developer.android.com/reference/android/os/AsyncTask)). Com isso, para futuras correções, a mais importante, seria a alteração dessa para classes como *Executor* ou *FutureTask* do pacote *java.util.concurrent*.
+
+### Outras funcionalidades que ainda podem ser adicionadas
+
+- Opção de favoritar pokémons (adicionar ícone de estrela a ser preenchida em cada pokémon), sendo estes os primeiros a serem listados (necessário adicionar um campo booleano "favorito" na tabela "pokemons" SQLite);
+- Adicionar outro Spinner de escolha para incrementar a busca por tipo de pokémons (cada pokémon pode ter no máximo duas tipagens);
+- Adicionar tela de "lista vazia" para ser mostrada na aba de busca por tipos;
+- Obter mais informações de cada pokémon para serem mostradas (evoluções, golpes, fraquezas, etc.);
+- Implementar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em items de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera;
+- Alterar elemento SearchView para conjunto ImageView + EditText para otimizar experiência e layout de busca;
+- Modificar busca para nome OU também número.
