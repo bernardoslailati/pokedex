@@ -13,6 +13,7 @@ import com.desafio.squadra.android.pokedex.service.web.response.Pokemon2;
 import com.desafio.squadra.android.pokedex.service.web.response.PokemonType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity(tableName = "pokemons")
@@ -30,8 +31,27 @@ public class PokemonEntity implements Parcelable {
     @Ignore
     public PokemonEntity(Pokemon2 pokemon2) {
         this.number = pokemon2.getId();
-        this.name =
-                (pokemon2.getName().substring(0, 1).toUpperCase() + pokemon2.getName().substring(1)).replace("-", " ");
+
+        List<String> pokemonName = Arrays.asList(pokemon2.getName().split("-"));
+        if (pokemonName.size() > 1) {
+            if (pokemonName.get(1).length() > 2)
+                this.name = pokemonName.get(0).substring(0, 1).toUpperCase() + pokemonName.get(0).substring(1) +
+                        " " + pokemonName.get(1).substring(0, 1).toUpperCase() + pokemonName.get(1).substring(1);
+            else {
+                if (pokemonName.get(1).equals("m"))
+                    this.name = pokemonName.get(0).substring(0, 1).toUpperCase() + pokemonName.get(0).substring(1) +
+                           "♂";
+                else if (pokemonName.get(1).equals("f"))
+                    this.name = pokemonName.get(0).substring(0, 1).toUpperCase() + pokemonName.get(0).substring(1) +
+                            "♀";
+                else
+                    this.name = pokemonName.get(0).substring(0, 1).toUpperCase() + pokemonName.get(0).substring(1) +
+                            "-" + pokemonName.get(1).substring(0, 1).toUpperCase() + pokemonName.get(1).substring(1);
+            }
+        }
+        else
+            this.name =
+                    (pokemon2.getName().substring(0, 1).toUpperCase() + pokemon2.getName().substring(1)).replace("-", " ");
 
         List<String> pokemonTypes = new ArrayList<>();
 
