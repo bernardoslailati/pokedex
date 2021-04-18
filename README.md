@@ -61,7 +61,6 @@ Funcionalidades esperadas:
 - Versão Android SDK Alvo/Compilada: **29**
 - Versão Android SDK Mínima: **21 -> Android 5.0 (LOLLIPOP)**
 - APIS consumidas:
-  - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições a cada 12 horas
   - [PokéAPI](https://pokeapi.co/): uso ilimitado
 
 ### Principas bibliotecas utilizadas
