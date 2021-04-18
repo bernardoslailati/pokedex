@@ -1,9 +1,11 @@
 package com.desafio.squadra.android.pokedex.ui.util;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,9 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory;
 import com.desafio.squadra.android.pokedex.R;
 import com.desafio.squadra.android.pokedex.service.web.response.Pokemon;
 import com.desafio.squadra.android.pokedex.ui.activity.DetalhesPokemonActivity;
@@ -80,6 +85,9 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
         }
 
         holder.setLlItemPokemonOnClickListener(getItem(position));
+
+//        holder.setIvGotchaTag(false);
+//        holder.setIvGotchaOnClickListener();
     }
 
     public static class ProdutoHolder extends RecyclerView.ViewHolder {
@@ -92,6 +100,7 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
         private final LinearLayout llType2;
         private final TextView tvType2;
         private final ImageView ivType2;
+        private final ImageView ivGotcha;
 
         public ProdutoHolder(View itemView) {
             super(itemView);
@@ -109,6 +118,8 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
             llType2 = itemView.findViewById(R.id.ll_type_2);
             tvType2 = itemView.findViewById(R.id.tv_type_2);
             ivType2 = itemView.findViewById(R.id.iv_type_2);
+
+            ivGotcha = itemView.findViewById(R.id.iv_gotcha);
         }
 
         private int getPokemonTypeImageResource(String type) {
@@ -160,8 +171,13 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
         }
 
         public void setIvSprite(Context context, String pokemonSprite) {
+            DrawableCrossFadeFactory factory =
+                    new DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build();
+
             Glide.with(context)
                     .load(pokemonSprite)
+                    .transition(DrawableTransitionOptions.withCrossFade(factory))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .placeholder(R.drawable.pokeball_loading)
                     .error(R.drawable.ic_error_pokemon)
                     .into(ivSprite);
@@ -181,6 +197,27 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
             tvType2.setText(pokemonType2);
         }
 
+//        public void setIvGotchaTag(boolean enabled) {
+//            if (enabled)
+//                ivGotcha.setTag("gotcha_enabled");
+//            else
+//                ivGotcha.setTag("gotcha_disabled");
+//        }
+//
+//        public void setIvGotchaOnClickListener() {
+//            ivGotcha.setOnClickListener(v -> {
+//                if (ivGotcha.getTag().equals("gotcha_disabled")) {
+//                    ivGotcha.setImageResource(R.drawable.ic_gotcha_enabled);
+//                    ivGotcha.setTag("gotcha_enabled");
+//                }
+//                else {
+//                    ivGotcha.setImageResource(R.drawable.ic_gotcha_disabled);
+//                    ivGotcha.setTag("gotcha_disabled");
+//                }
+//            });
+//
+//        }
+
         public void setLlType2Visibility(int visibility) {
             llType2.setVisibility(visibility);
         }
@@ -188,10 +225,15 @@ public class PokemonsAdapter extends ListAdapter<Pokemon, PokemonsAdapter.Produt
         public void setLlItemPokemonOnClickListener(Pokemon pokemonEscolhido) {
             llItemPokemon.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), DetalhesPokemonActivity.class);
-
+                intent.putExtra("pokemonEscolhido", pokemonEscolhido);
                 try {
-                    intent.putExtra("pokemonEscolhido", pokemonEscolhido);
-                    v.getContext().startActivity(intent);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        v.getContext().startActivity(intent,
+                                ActivityOptions.makeSceneTransitionAnimation((Activity) v.getContext()).toBundle());
+                    } else {
+                        v.getContext().startActivity(intent);
+                    }
+
 
                 } catch (Exception ignored) {}
             });

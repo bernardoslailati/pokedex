@@ -5,4 +5,13 @@
     <color name="primaryLightColor">#f05545</color>
     <color name="primaryDarkColor">#7f0000</color>
     <color name="primaryTextColor">#ffffff</color>
+
+    <color name="green">#4CAF50</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="orange">#FF4500</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="brown">#A0522D</color>
+    <color name="beige">#F3E5AB</color>
+    <color name="teal">#2196F3</color>
+    <color name="honey">#FFC30B</color>
 </resources>

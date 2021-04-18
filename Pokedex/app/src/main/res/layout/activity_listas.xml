@@ -47,7 +47,9 @@
             app:tabTextColor="?attr/colorOnSecondary"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="?attr/colorOnPrimary"
-            app:tabIndicatorColor="?attr/colorSecondary"/>
+            app:tabIndicatorColor="?attr/colorSecondary">
+
+        </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
