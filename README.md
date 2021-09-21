@@ -93,10 +93,10 @@ Funcionalidades esperadas:
   - A fim de não travar a interação do usuário na aplicação, foram utilizadas requisições assíncronas via método "enqueue" abstraído pela biblioteca Retrofit2
 
 - Monitoramento de alterações no banco de dados
-  - Usado método "observer" de LiveData para preencher as listas de items inseridos nos RecyclerViews
+  - Usado método "observer" de LiveData para preencher as listas de itens inseridos nos RecyclerViews
 
 - SearchView + RecyclerView para buscas
-  - Realização de buscas de items mostrados dentro de RecyclerViews, no padrão de atualização da busca a cada modificação de caracter (tempo real)
+  - Realização de buscas de itens mostrados dentro de RecyclerViews, no padrão de atualização da busca a cada modificação de caracter (tempo real)
 
 - Lazy loading de imagens
   - Imagens utilizadas de boa qualidade e resolução, utilizada então a biblioteca Glide para carregar de forma assíncrona as figuras relacionadas aos pokémons e os tipos (grama, fogo, água, etc.)
@@ -114,6 +114,6 @@ __*Observação*__: percebeu-se no final do desafio que a classe utilizada *Asyn
 - Adicionar outro Spinner de escolha para incrementar a busca por tipo de pokémons (cada pokémon pode ter no máximo duas tipagens);
 - Adicionar tela de "lista vazia" para ser mostrada na aba de busca por tipos;
 - Obter mais informações de cada pokémon para serem mostradas (evoluções, golpes, fraquezas, etc.);
-- Implementar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em items de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera;
+- Implementar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em itens de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera;
 - Alterar elemento SearchView para conjunto ImageView + EditText para otimizar experiência e layout de busca;
 - Modificar busca para nome OU também número.
