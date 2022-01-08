@@ -3,7 +3,7 @@
 <div><img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white" /></div>
 
-<p align="center">Aplicativo de listagem de pokémons por geração (**TODAS AS 8 GERAÇÕES!**) e tipo, com opção de análise detalhada de cada pokémon.</p>
+<p align="center">Aplicativo de listagem de pokémons filtrado por geração (**TODAS AS 8 GERAÇÕES!**) ou tipo, com opção de análise detalhada de cada pokémon, funcinando nos cenários online e offline.</p>
 
 ### Funcionalidades e Demonstrativos
 
