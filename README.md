@@ -63,6 +63,7 @@
 ### Escolhas e Por quês
 
 - Uso de ViewBinding
+  - Padrão nullsafety de acesso a views
   - Remover boilerplate do método "findViewById" 
 
 - RecyclerView / Spinner + Adapters Customizados
