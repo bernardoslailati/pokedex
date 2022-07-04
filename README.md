@@ -1,22 +1,9 @@
-# Desafio Squadra - Android Nativo
-
-## Descição do Desafio
-
-*Crie um app simples utilizando Java ou Kotlin e a API do Dragon Ball.*
-
-Funcionalidades esperadas:
-- Página para listar Personagens, com campo de busca. Cada personagem deve ser apresentado em um card com nome e imagem (se houver).
-- Página para listar Planetas, com campo de busca. Na lista de planetas o usuário poderá ir para a página de residentes do planeta.
-- Seja criativo na elaboração do layout da aplicação
-
-[Link: Desafio SQUADRA - Teste Android Nativo](https://www.dropbox.com/s/cfggf15f4d42efz/Teste%20Android.pdf?dl=0)
-
-## Solução Proposta - Pokédex
+# Pokedéx
 
 <div><img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white" /></div>
 
-<p align="center">Aplicativo de listagem de pokémons por geração (implementadas gerações 1 e 2) e tipo, com opção de análise detalhada de cada pokémon.</p>
+<p align="center">Aplicativo de listagem de pokémons filtrado por geração (**TODAS AS 8 GERAÇÕES!**) ou tipo, com opção de análise detalhada de cada pokémon, funcinando nos cenários online e offline.</p>
 
 ### Funcionalidades e Demonstrativos
 
@@ -61,7 +48,6 @@ Funcionalidades esperadas:
 - Versão Android SDK Alvo/Compilada: **29**
 - Versão Android SDK Mínima: **21 -> Android 5.0 (LOLLIPOP)**
 - APIS consumidas:
-  - [PokéDexAPI](https://pokedevs.gitbook.io/pokedex/): limite de 500 requisições a cada 12 horas
   - [PokéAPI](https://pokeapi.co/): uso ilimitado
 
 ### Principas bibliotecas utilizadas
@@ -77,6 +63,7 @@ Funcionalidades esperadas:
 ### Escolhas e Por quês
 
 - Uso de ViewBinding
+  - Padrão nullsafety de acesso a views
   - Remover boilerplate do método "findViewById" 
 
 - RecyclerView / Spinner + Adapters Customizados
@@ -94,10 +81,10 @@ Funcionalidades esperadas:
   - A fim de não travar a interação do usuário na aplicação, foram utilizadas requisições assíncronas via método "enqueue" abstraído pela biblioteca Retrofit2
 
 - Monitoramento de alterações no banco de dados
-  - Usado método "observer" de LiveData para preencher as listas de items inseridos nos RecyclerViews
+  - Usado método "observer" de LiveData para preencher as listas de itens inseridos nos RecyclerViews
 
 - SearchView + RecyclerView para buscas
-  - Realização de buscas de items mostrados dentro de RecyclerViews, no padrão de atualização da busca a cada modificação de caracter (tempo real)
+  - Realização de buscas de itens mostrados dentro de RecyclerViews, no padrão de atualização da busca a cada modificação de caracter (tempo real)
 
 - Lazy loading de imagens
   - Imagens utilizadas de boa qualidade e resolução, utilizada então a biblioteca Glide para carregar de forma assíncrona as figuras relacionadas aos pokémons e os tipos (grama, fogo, água, etc.)
@@ -115,6 +102,6 @@ __*Observação*__: percebeu-se no final do desafio que a classe utilizada *Asyn
 - Adicionar outro Spinner de escolha para incrementar a busca por tipo de pokémons (cada pokémon pode ter no máximo duas tipagens);
 - Adicionar tela de "lista vazia" para ser mostrada na aba de busca por tipos;
 - Obter mais informações de cada pokémon para serem mostradas (evoluções, golpes, fraquezas, etc.);
-- Implementar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em items de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera;
+- Implementar animações utilizando a biblioteca Animation (inserida no conjunto Jetpack Compose) em itens de RecyclerViews e transição de Activities para melhorar interação com o usuário em momentos de espera;
 - Alterar elemento SearchView para conjunto ImageView + EditText para otimizar experiência e layout de busca;
 - Modificar busca para nome OU também número.
